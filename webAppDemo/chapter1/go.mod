@@ -1,4 +1,4 @@
-module newTest/webAppDemo/chapter1
+module webAppDemo/chapter1
 
 go 1.14
 

@@ -1,4 +1,4 @@
-module goProjects/rxDemo
+module rxDemo
 
 go 1.15
 

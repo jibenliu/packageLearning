@@ -1,4 +1,4 @@
-module newTest/wireExam/better
+module wireExam/better
 
 go 1.15
 

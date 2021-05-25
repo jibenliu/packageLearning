@@ -1,5 +1,5 @@
-module newTest/nutsdbDemo
+module nutsdbDemo
 
-go 1.14
+go 1.16
 
 require github.com/xujiajun/nutsdb v0.5.0

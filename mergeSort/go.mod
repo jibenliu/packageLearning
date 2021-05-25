@@ -1,3 +1,3 @@
-module newTest/mergeSort
+module mergeSort
 
 go 1.14

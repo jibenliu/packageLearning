@@ -10,6 +10,9 @@ func main() {
 	for i := 0; i < 3; i++ {
 		out = append(out, &i)
 	}
+	if out == nil {
+		return
+	}
 	fmt.Println("values:", *out[0], *out[1], *out[2])
 	fmt.Println("address:", out[0], out[1], out[2])
 

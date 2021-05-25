@@ -35,7 +35,7 @@ func main() {
 				fmt.Println(err)
 				break
 			}
-			var temp = strings.Replace(lineString, "Vat", "", 1)
+			var temp = strings.Replace(string(lineString), "Vat", "", 1)
 			fmt.Println(temp)
 			_, _ = f.Seek(int64(-(len(lineString))), 1)
 			_, newErr := f.WriteString(fmt.Sprintf(temp) + "\n")

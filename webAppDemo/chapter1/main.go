@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"newTest/webAppDemo/chapter1/gee"
+	"webAppDemo/chapter1/gee"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module newTest/sessionExam
+module sessionExam
 
 go 1.14
 

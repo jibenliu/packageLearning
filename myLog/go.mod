@@ -1,3 +1,3 @@
-module newTest/myLog
+module myLog
 
 go 1.14

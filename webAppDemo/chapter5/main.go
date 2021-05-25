@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-	"newTest/webAppDemo/chapter5/gee"
 	"time"
+	"webAppDemo/chapter5/gee"
 )
 
 func main() {
@@ -25,7 +25,6 @@ func main() {
 
 	r.Run(":9999")
 }
-
 
 func onlyForV2() gee.HandlerFunc {
 	return func(c *gee.Context) {

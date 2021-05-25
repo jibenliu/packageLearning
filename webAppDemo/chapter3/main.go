@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"newTest/webAppDemo/chapter3/gee"
+	"webAppDemo/chapter3/gee"
 )
 
 func main() {

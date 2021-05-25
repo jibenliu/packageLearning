@@ -1,7 +1,7 @@
 package main
 
 import (
-	"src/github.com/go-gomail/gomail"
+	"github.com/go-gomail/gomail"
 	"strings"
 )
 

@@ -15,7 +15,7 @@ func newSliceValue(vals []string, p *[]string) *sliceValue {
 	return (*sliceValue)(p)
 }
 
-//实现flag包中的Value接口，将命令行接收到的值用,分隔存到slice里
+// Set 实现flag包中的Value接口，将命令行接收到的值用,分隔存到slice里
 func (s *sliceValue) Set(val string) error {
 	*s = sliceValue(strings.Split(val, ","))
 	return nil

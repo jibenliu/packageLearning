@@ -2,7 +2,7 @@ package main
 
 import (
 	"io/ioutil"
-	"newTest/myLog/myLog"
+	"myLog/myLog"
 	"os"
 )
 

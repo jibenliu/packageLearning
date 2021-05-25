@@ -6,14 +6,14 @@ import (
 	"github.com/spf13/viper"
 )
 
-//定义config结构体
+// Config 定义config结构体
 type Config struct {
 	AppId  string
 	Secret string
 	Host   Host
 }
 
-//json中的嵌套对应结构体的嵌套
+// Host json中的嵌套对应结构体的嵌套
 type Host struct {
 	Address string
 	Port    int

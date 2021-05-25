@@ -1,4 +1,4 @@
-module newTest/wireExam/base
+module wireExam/base
 
 go 1.15
 

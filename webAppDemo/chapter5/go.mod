@@ -1,3 +1,3 @@
-module newTest/webAppDemo/chapter5
+module webAppDemo/chapter5
 
 go 1.14

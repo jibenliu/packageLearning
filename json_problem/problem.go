@@ -36,7 +36,7 @@ type Object struct {
 	Num int `json:"num"`
 }
 
-//uncommenting this method still doesnt help.
+// UnmarshalJSON uncommenting this method still doesnt help.
 //tmp is parsed with the completed json at Nested
 //which doesnt take care of Num field, so Num is zero value.
 func (o *Object) UnmarshalJSON(data []byte) error {

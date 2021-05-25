@@ -21,7 +21,7 @@ func main() {
 	}
 	defer csvFile.Close()
 
-	csvFile.WriteString("\xEF\xBB\xBF")
+	_, _ = csvFile.WriteString("\xEF\xBB\xBF")
 	tutorials := []Tutorial{
 		{Id: 1, Title: "Go 入门编程", Summary: "Go 基本语法和使用示例", Author: "学院君"},
 		{Id: 2, Title: "Go Web 编程", Summary: "Go Web 编程入门指南", Author: "学院君"},
@@ -70,9 +70,11 @@ func main() {
 		tutorials2 = append(tutorials, tutorial)
 	}
 
-	// 打印 tutorials2 的第一个元素验证 csv 文件写入/读取是否成功
-	fmt.Println(tutorials2[0].Id)
-	fmt.Println(tutorials2[0].Title)
-	fmt.Println(tutorials2[0].Summary)
-	fmt.Println(tutorials2[0].Author)
+	if tutorials2 != nil {
+		// 打印 tutorials2 的第一个元素验证 csv 文件写入/读取是否成功
+		fmt.Println(tutorials2[0].Id)
+		fmt.Println(tutorials2[0].Title)
+		fmt.Println(tutorials2[0].Summary)
+		fmt.Println(tutorials2[0].Author)
+	}
 }

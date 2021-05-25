@@ -29,5 +29,5 @@ func main() {
 	fmt.Println(r.Area())
 }
 
-// go build -gcflags='-m=2' stack_heap_test.go 差看一下内联的情况,只支持main包
+// go build -gcflags='-m=2' stack_heap_test.go 查看一下内联的情况,只支持main包
 // go build -gcflags "-m -l"

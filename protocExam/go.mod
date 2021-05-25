@@ -1,4 +1,4 @@
-module newTest/protocExam
+module protocExam
 
 go 1.15
 

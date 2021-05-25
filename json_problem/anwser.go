@@ -1,9 +1,9 @@
 package main
 
 import (
-"encoding/json"
-"fmt"
-"time"
+	"encoding/json"
+	"fmt"
+	"time"
 )
 
 var testJSON = `{"num":5,"duration":"5s"}`
@@ -37,14 +37,13 @@ type Object struct {
 	Num int `json:"num"`
 }
 
-//uncommenting this method still doesnt help.
+// UnmarshalJSON uncommenting this method still doesnt help.
 //tmp is parsed with the completed json at Nested
 //which doesnt take care of Num field, so Num is zero value.
 func (o *Object) UnmarshalJSON(data []byte) error {
 	tmp := struct {
 		//Nested
 		Num int `json:"num"`
-
 	}{}
 	// unmarshal Nested alone
 	tmpNest := struct {

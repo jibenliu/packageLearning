@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
 	"io/ioutil"
-	"newTest/protocExam/protobuf/pro"
 	"os"
+	"protocExam/protobuf/pro"
 )
 
 func write() {
