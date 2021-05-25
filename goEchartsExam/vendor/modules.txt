@@ -1,9 +1,0 @@
-# github.com/go-echarts/go-echarts/v2 v2.0.1
-## explicit
-github.com/go-echarts/go-echarts/v2/charts
-github.com/go-echarts/go-echarts/v2/components
-github.com/go-echarts/go-echarts/v2/datasets
-github.com/go-echarts/go-echarts/v2/opts
-github.com/go-echarts/go-echarts/v2/render
-github.com/go-echarts/go-echarts/v2/templates
-github.com/go-echarts/go-echarts/v2/types

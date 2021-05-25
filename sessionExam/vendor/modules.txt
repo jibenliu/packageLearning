@@ -1,5 +1,0 @@
-# github.com/gorilla/securecookie v1.1.1
-github.com/gorilla/securecookie
-# github.com/gorilla/sessions v1.2.0
-## explicit
-github.com/gorilla/sessions

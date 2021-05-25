@@ -1,3 +1,0 @@
-# github.com/abusizhishen/do-once-while-concurrent v1.0.1
-## explicit
-github.com/abusizhishen/do-once-while-concurrent/src

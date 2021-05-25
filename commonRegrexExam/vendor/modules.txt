@@ -1,3 +1,0 @@
-# github.com/mingrammer/commonregex v1.0.1
-## explicit
-github.com/mingrammer/commonregex
