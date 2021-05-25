@@ -1,0 +1,4 @@
+# github.com/arl/statsviz v0.1.1
+## explicit
+github.com/arl/statsviz
+github.com/arl/statsviz/websocket

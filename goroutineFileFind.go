@@ -1,0 +1,68 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"runtime"
+	"time"
+)
+
+var query = "data"
+var matches int
+
+var workerCount = 0
+var maxWorkerCount = runtime.NumCPU()
+var ch = make(chan struct{}, runtime.NumCPU())
+var searchRequest = make(chan string)
+var workerDone = make(chan bool)
+var foundMatch = make(chan bool)
+
+func main() {
+	start := time.Now()
+	workerCount = 1
+	go search("/", true)
+	waitForWorkers()
+	fmt.Println(matches, "matches")
+	fmt.Println(time.Since(start))
+}
+
+func waitForWorkers() {
+	for {
+		select {
+		case path := <-searchRequest:
+			workerCount++
+			ch <- struct{}{}
+			go search(path, true)
+		case <-workerDone:
+			workerCount--
+			if workerCount == 0 {
+				return
+			}
+		case <-foundMatch:
+			matches++
+		}
+	}
+}
+
+func search(path string, master bool) {
+	files, err := ioutil.ReadDir(path)
+	if err == nil {
+		for _, file := range files {
+			name := file.Name()
+			if name == query {
+				foundMatch <- true
+			}
+			if file.IsDir() {
+				if workerCount < maxWorkerCount {
+					searchRequest <- path + name + "/"
+				} else {
+					search(path+name+"/", false)
+				}
+			}
+		}
+		if master {
+			workerDone <- true
+			<-ch
+		}
+	}
+}

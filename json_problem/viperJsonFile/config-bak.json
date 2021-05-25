@@ -1,0 +1,8 @@
+{
+  "appid": "123456789",
+  "host": {
+    "address": "localhost",
+    "port": 5799
+  },
+  "secret": "maple123456"
+}

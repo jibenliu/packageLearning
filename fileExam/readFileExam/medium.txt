@@ -1,0 +1,1442 @@
+2020-08-05 17:46:06 [172.18.0.1][-][-][info][yii\filters\RateLimiter::beforeAction] Rate limit skipped: user not logged in.
+2020-08-05 17:46:06 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志' => [
+        'ResultCode' => '0000',
+        'ResultMessage' => '',
+        'Content' => [
+            'ReqSerialNo' => '20071617192402483139',
+            'InvStatus' => null,
+            'InvMessage' => '开票失败',
+            'BillCode' => '5163ce916672ec915ac4',
+            'InfoTypeCode' => '',
+            'InfoNumber' => '',
+            'InfoDate' => '1970-01-01 08:00:00',
+            'PdfUrl' => '',
+            'ImgUrl' => '',
+        ],
+        'ResultFlag' => true,
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:100
+2020-08-05 17:46:06 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `vat_apply_invoice_list`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:06 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'vat_apply_invoice_list' AND kcu.table_name = 'vat_apply_invoice_list'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `vat_apply_invoice_list` WHERE `serial_no`='20071617192402483139'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE `tenant_code`='myzb'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][application] [
+    '电票回调租户代码日志' => [
+        'tenantCode' => 'myzb',
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:121
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:07 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:08 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:08 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT `vat_invoice`.* FROM `vat_invoice` LEFT JOIN `vat_invoice_attached_info` ON `vat_invoice`.`id` = `vat_invoice_attached_info`.`invoice_id` WHERE (`is_pre_invoice`=1) AND (`status`=3) AND (`serial_no`='20071617192402483139')
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:08 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志debug4' => '20071617192402483139',
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:171
+2020-08-05 17:46:05 [172.18.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '277'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => 'dc1ae929-579d-48fc-8f3e-6bd4bd70d78a'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'HTTP_CONTENT_TYPE' => 'text/plain'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-callback/electronic-invoice-status'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '277'
+    'CONTENT_TYPE' => 'text/plain'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620764.2085
+    'REQUEST_TIME' => 1596620764
+]
+2020-08-05 17:46:13 [172.18.0.1][-][-][info][yii\filters\RateLimiter::beforeAction] Rate limit skipped: user not logged in.
+2020-08-05 17:46:13 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志' => [
+        'ResultCode' => '0000',
+        'ResultMessage' => '',
+        'Content' => [
+            'ReqSerialNo' => '20071617192402483139',
+            'InvStatus' => null,
+            'InvMessage' => '开票失败',
+            'BillCode' => '5163ce916672ec915ac4',
+            'InfoTypeCode' => '',
+            'InfoNumber' => '',
+            'InfoDate' => '1970-01-01 08:00:00',
+            'PdfUrl' => '',
+            'ImgUrl' => '',
+        ],
+        'ResultFlag' => true,
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:100
+2020-08-05 17:46:13 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `vat_apply_invoice_list`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:13 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:13 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'vat_apply_invoice_list' AND kcu.table_name = 'vat_apply_invoice_list'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:13 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `vat_apply_invoice_list` WHERE `serial_no`='20071617192402483139'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE `tenant_code`='myzb'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][application] [
+    '电票回调租户代码日志' => [
+        'tenantCode' => 'myzb',
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:121
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:14 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:15 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT `vat_invoice`.* FROM `vat_invoice` LEFT JOIN `vat_invoice_attached_info` ON `vat_invoice`.`id` = `vat_invoice_attached_info`.`invoice_id` WHERE (`is_pre_invoice`=1) AND (`status`=3) AND (`serial_no`='20071617192402483139')
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:15 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志debug4' => '20071617192402483139',
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:171
+2020-08-05 17:46:12 [172.18.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '277'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => '9b3db4fd-eb8d-4e42-ab1e-bb3dba86bf52'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'HTTP_CONTENT_TYPE' => 'text/plain'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-callback/electronic-invoice-status'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '277'
+    'CONTENT_TYPE' => 'text/plain'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620771.3079
+    'REQUEST_TIME' => 1596620771
+]
+2020-08-05 17:46:19 [172.18.0.1][-][-][info][yii\filters\RateLimiter::beforeAction] Rate limit skipped: user not logged in.
+2020-08-05 17:46:19 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志' => [
+        'ResultCode' => '0000',
+        'ResultMessage' => '',
+        'Content' => [
+            'ReqSerialNo' => '20071617192402483139',
+            'InvStatus' => null,
+            'InvMessage' => '开票失败',
+            'BillCode' => '5163ce916672ec915ac4',
+            'InfoTypeCode' => '',
+            'InfoNumber' => '',
+            'InfoDate' => '1970-01-01 08:00:00',
+            'PdfUrl' => '',
+            'ImgUrl' => '',
+        ],
+        'ResultFlag' => true,
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:100
+2020-08-05 17:46:19 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `vat_apply_invoice_list`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:19 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'vat_apply_invoice_list' AND kcu.table_name = 'vat_apply_invoice_list'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `vat_apply_invoice_list` WHERE `serial_no`='20071617192402483139'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE `tenant_code`='myzb'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][application] [
+    '电票回调租户代码日志' => [
+        'tenantCode' => 'myzb',
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:121
+2020-08-05 17:46:20 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:21 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:21 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:21 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:22 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT `vat_invoice`.* FROM `vat_invoice` LEFT JOIN `vat_invoice_attached_info` ON `vat_invoice`.`id` = `vat_invoice_attached_info`.`invoice_id` WHERE (`is_pre_invoice`=1) AND (`status`=3) AND (`serial_no`='20071617192402483139')
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:22 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志debug4' => '20071617192402483139',
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:171
+2020-08-05 17:46:19 [172.18.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '277'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => '7417e3c6-fa65-48fc-93bc-70e5225835bc'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'HTTP_CONTENT_TYPE' => 'text/plain'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-callback/electronic-invoice-status'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '277'
+    'CONTENT_TYPE' => 'text/plain'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620778.465
+    'REQUEST_TIME' => 1596620778
+]
+2020-08-05 17:46:39 [172.18.0.1][-][-][info][yii\filters\RateLimiter::beforeAction] Rate limit skipped: user not logged in.
+2020-08-05 17:46:39 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志' => [
+        'ResultCode' => '0000',
+        'ResultMessage' => '',
+        'Content' => [
+            'ReqSerialNo' => '20071617192402483139',
+            'InvStatus' => null,
+            'InvMessage' => '开票失败',
+            'BillCode' => '5163ce916672ec915ac4',
+            'InfoTypeCode' => '',
+            'InfoNumber' => '',
+            'InfoDate' => '1970-01-01 08:00:00',
+            'PdfUrl' => '',
+            'ImgUrl' => '',
+        ],
+        'ResultFlag' => true,
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:100
+2020-08-05 17:46:39 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `vat_apply_invoice_list`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:39 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:40 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'vat_apply_invoice_list' AND kcu.table_name = 'vat_apply_invoice_list'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:40 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `vat_apply_invoice_list` WHERE `serial_no`='20071617192402483139'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:109
+2020-08-05 17:46:40 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE `tenant_code`='myzb'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:120
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][application] [
+    '电票回调租户代码日志' => [
+        'tenantCode' => 'myzb',
+    ],
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:121
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:122
+2020-08-05 17:46:41 [172.18.0.1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:42 [172.18.0.1][-][-][info][yii\db\Command::query] SELECT `vat_invoice`.* FROM `vat_invoice` LEFT JOIN `vat_invoice_attached_info` ON `vat_invoice`.`id` = `vat_invoice_attached_info`.`invoice_id` WHERE (`is_pre_invoice`=1) AND (`status`=3) AND (`serial_no`='20071617192402483139')
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:148
+2020-08-05 17:46:42 [172.18.0.1][-][-][info][application] [
+    '电票回调请求日志debug4' => '20071617192402483139',
+]
+    in /var/www/html/mysoft_vat/api/controllers/InvoiceCallbackController.php:171
+2020-08-05 17:46:38 [172.18.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '277'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => 'd32cfed6-403d-45c9-974d-1d4ae1080ffc'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'HTTP_CONTENT_TYPE' => 'text/plain'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-callback/electronic-invoice-status'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '277'
+    'CONTENT_TYPE' => 'text/plain'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620796.3817
+    'REQUEST_TIME' => 1596620796
+]
+2020-08-05 17:46:51 [172.18.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php:93
+Stack trace:
+#0 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/QueryParamAuth.php(37): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(73): yii\filters\auth\QueryParamAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php(59): yii\filters\auth\CompositeAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#3 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(57): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#4 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\auth\CompositeAuth->beforeAction(Object(yii\base\InlineAction))
+#5 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#6 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#7 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(274): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#8 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#9 /var/www/html/mysoft_vat/api/controllers/BaseController.php(58): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#10 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(155): api\controllers\BaseController->beforeAction(Object(yii\base\InlineAction))
+#11 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('template-list', Array)
+#12 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('invoice-rules/t...', Array)
+#13 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Application.php(388): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/html/mysoft_vat/api/web/index.php(17): yii\base\Application->run()
+#15 {main}
+2020-08-05 17:46:50 [172.18.0.1][-][-][info][application] $_GET = [
+    'token' => '1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z'
+    'invoice_type' => '18'
+    'is_red' => '2'
+    'source_id' => '1'
+    'is_pay_advance' => '0'
+    'split_type' => '11'
+    'precise' => '2'
+    'rows' => '8'
+    'product_type_id' => [
+        0 => '0'
+    ]
+    '_timestamp' => '1593480192293'
+]
+
+$_POST = [
+    'tax_system_id' => '10'
+    'id' => '25'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '273'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------517278684514118637687984'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => '201a9c44-7087-4874-be7f-d9f88c5b3f6f'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-rules/template-list?token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '273'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------517278684514118637687984'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620809.7574
+    'REQUEST_TIME' => 1596620809
+]
+2020-08-05 17:46:55 [172.18.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php:93
+Stack trace:
+#0 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/QueryParamAuth.php(37): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(73): yii\filters\auth\QueryParamAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php(59): yii\filters\auth\CompositeAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#3 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(57): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#4 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\auth\CompositeAuth->beforeAction(Object(yii\base\InlineAction))
+#5 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#6 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#7 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(274): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#8 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#9 /var/www/html/mysoft_vat/api/controllers/BaseController.php(58): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#10 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(155): api\controllers\BaseController->beforeAction(Object(yii\base\InlineAction))
+#11 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('template-list', Array)
+#12 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('invoice-rules/t...', Array)
+#13 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Application.php(388): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/html/mysoft_vat/api/web/index.php(17): yii\base\Application->run()
+#15 {main}
+2020-08-05 17:46:54 [172.18.0.1][-][-][info][application] $_GET = [
+    'token' => '1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z'
+    'invoice_type' => '18'
+    'is_red' => '2'
+    'source_id' => '1'
+    'is_pay_advance' => '0'
+    'split_type' => '11'
+    'precise' => '2'
+    'rows' => '8'
+    'product_type_id' => [
+        0 => '0'
+    ]
+    '_timestamp' => '1593480192293'
+]
+
+$_POST = [
+    'tax_system_id' => '10'
+    'id' => '25'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '273'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------058526946922923872575568'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => '248ef715-2ef5-4e98-af6c-be6688948450'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-rules/template-list?token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '273'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------058526946922923872575568'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620813.8467
+    'REQUEST_TIME' => 1596620813
+]
+2020-08-05 17:47:15 [172.18.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php:93
+Stack trace:
+#0 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/QueryParamAuth.php(37): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(73): yii\filters\auth\QueryParamAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php(59): yii\filters\auth\CompositeAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#3 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(57): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#4 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\auth\CompositeAuth->beforeAction(Object(yii\base\InlineAction))
+#5 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#6 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#7 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(274): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#8 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#9 /var/www/html/mysoft_vat/api/controllers/BaseController.php(58): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#10 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(155): api\controllers\BaseController->beforeAction(Object(yii\base\InlineAction))
+#11 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('template-list', Array)
+#12 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('invoice-rules/t...', Array)
+#13 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Application.php(388): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/html/mysoft_vat/api/web/index.php(17): yii\base\Application->run()
+#15 {main}
+2020-08-05 17:47:14 [172.18.0.1][-][-][info][application] $_GET = [
+    'token' => '1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z'
+    'invoice_type' => '18'
+    'is_red' => '2'
+    'source_id' => '1'
+    'is_pay_advance' => '0'
+    'split_type' => '11'
+    'precise' => '2'
+    'rows' => '8'
+    'product_type_id' => [
+        0 => '0'
+    ]
+    '_timestamp' => '1593480192293'
+]
+
+$_POST = [
+    'tax_system_id' => '10'
+    'id' => '25'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '273'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------912553276098427061750508'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => 'a352259b-9024-427a-b180-e99121850afc'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-rules/template-list?token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '273'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------912553276098427061750508'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620833.7919
+    'REQUEST_TIME' => 1596620833
+]
+2020-08-05 17:47:25 [172.18.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php:93
+Stack trace:
+#0 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/QueryParamAuth.php(37): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(73): yii\filters\auth\QueryParamAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/AuthMethod.php(59): yii\filters\auth\CompositeAuth->authenticate(Object(common\components\db\User), Object(yii\web\Request), Object(yii\web\Response))
+#3 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/filters/auth/CompositeAuth.php(57): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#4 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\auth\CompositeAuth->beforeAction(Object(yii\base\InlineAction))
+#5 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#6 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#7 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(274): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#8 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#9 /var/www/html/mysoft_vat/api/controllers/BaseController.php(58): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#10 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Controller.php(155): api\controllers\BaseController->beforeAction(Object(yii\base\InlineAction))
+#11 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('template-list', Array)
+#12 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('invoice-rules/t...', Array)
+#13 /var/www/html/mysoft_vat/vendor/yiisoft/yii2/base/Application.php(388): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/html/mysoft_vat/api/web/index.php(17): yii\base\Application->run()
+#15 {main}
+2020-08-05 17:47:25 [172.18.0.1][-][-][info][application] $_GET = [
+    'token' => '1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z'
+    'invoice_type' => '18'
+    'is_red' => '2'
+    'source_id' => '1'
+    'is_pay_advance' => '0'
+    'split_type' => '11'
+    'precise' => '2'
+    'rows' => '8'
+    'product_type_id' => [
+        0 => '0'
+    ]
+    '_timestamp' => '1593480192293'
+]
+
+$_POST = [
+    'tax_system_id' => '10'
+    'id' => '25'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '273'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------029827784113675096377367'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => 'cb15a94c-7162-4757-9ce5-43b91519ba42'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/invoice-rules/template-list?token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '273'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------029827784113675096377367'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'token=1E0vZF-ID9kPdFiavKgvXSTCeyCxsE_z&invoice_type=18&is_red=2&source_id=1&is_pay_advance=0&split_type=11&precise=2&rows=8&product_type_id[]=0&_timestamp=1593480192293'
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620844.8178
+    'REQUEST_TIME' => 1596620844
+]
+2020-08-05 17:47:42 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:42 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE (`tenant_code`='myzb') AND (`is_enable`=1)
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `vat_user`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:43 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:44 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'vat_user' AND kcu.table_name = 'vat_user'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:44 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `vat_user` WHERE `username`='admin'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:44 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\web\User::login] User '4230bc6e-69e6-46a9-a39e-b929a06a84e8' logged in from 172.18.0.1. Session not enabled.
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:134
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:61
+2020-08-05 17:47:44 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::execute] UPDATE `vat_user` SET `auth_key`='FqP13FB3zRHAiDkaZRVZ9cVE1SUSw6PT', `update_time`=NOW() WHERE `id`='4230bc6e-69e6-46a9-a39e-b929a06a84e8'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:138
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:61
+2020-08-05 17:47:42 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][application] $_GET = []
+
+$_POST = [
+    'tenant_code' => 'myzb'
+    'username' => 'admin'
+    'password' => '1'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '390'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------566330984054158512312802'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => '04eefca8-ac39-4e6a-81b3-9a3236a20191'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/site/login'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '390'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------566330984054158512312802'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620861.9521
+    'REQUEST_TIME' => 1596620861
+]
+2020-08-05 17:47:48 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:48 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:48 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE (`tenant_code`='myzb') AND (`is_enable`=1)
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `vat_user` WHERE `username`='admin'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:47:49 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\web\User::login] User '4230bc6e-69e6-46a9-a39e-b929a06a84e8' logged in from 172.18.0.1. Session not enabled.
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:134
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:61
+2020-08-05 17:47:50 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::execute] UPDATE `vat_user` SET `auth_key`='kEifRUpezP9pElQqZ4MKr184QkZXbqNg', `update_time`=NOW() WHERE `id`='4230bc6e-69e6-46a9-a39e-b929a06a84e8'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:138
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:61
+2020-08-05 17:47:47 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][application] $_GET = []
+
+$_POST = [
+    'tenant_code' => 'myzb'
+    'username' => 'admin'
+    'password' => '1'
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '061338d4ed523aa86b98437526f4be2b3cef7f6ff1a8bf6b1af4f03125f98f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"IewduM--PlZNUc1kRFFLMW8QiPmeEZ_p\";}'
+]
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '390'
+    'HTTP_COOKIE' => '_csrf=061338d4ed523aa86b98437526f4be2b3cef7f6ff1a8bf6b1af4f03125f98f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22IewduM--PlZNUc1kRFFLMW8QiPmeEZ_p%22%3B%7D'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------134968864074697019642918'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => '4e627070-deef-4ead-ac00-fd50a72b3282'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/site/login'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '390'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------134968864074697019642918'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620866.2474
+    'REQUEST_TIME' => 1596620866
+]
+2020-08-05 17:48:07 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_tenants`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:07 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=invoice_config
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:07 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_tenants' AND kcu.table_name = 'p_tenants'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:08 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `p_tenants` WHERE (`tenant_code`='myzb') AND (`is_enable`=1)
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:61
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:08 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `p_instance` WHERE `instance_id`='1'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:08 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `p_instance`
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:08 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'p_instance' AND kcu.table_name = 'p_instance'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:66
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:08 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=120.27.219.116;port=8300;dbname=mysoft_vat
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:08 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::query] SELECT * FROM `vat_user` WHERE `username`='admin'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:156
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:94
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:58
+2020-08-05 17:48:09 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\web\User::login] User '4230bc6e-69e6-46a9-a39e-b929a06a84e8' logged in from 172.18.0.1. Session not enabled.
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:134
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:61
+2020-08-05 17:48:09 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][yii\db\Command::execute] UPDATE `vat_user` SET `auth_key`='tETOlS1UIOAZfoQB0E7sfo88671Pw5eQ', `update_time`=NOW() WHERE `id`='4230bc6e-69e6-46a9-a39e-b929a06a84e8'
+    in /var/www/html/mysoft_vat/common/components/db/models/LoginForm.php:138
+    in /var/www/html/mysoft_vat/api/controllers/SiteController.php:61
+2020-08-05 17:48:06 [172.18.0.1][4230bc6e-69e6-46a9-a39e-b929a06a84e8][-][info][application] $_GET = []
+
+$_POST = [
+    'tenant_code' => 'myzb'
+    'username' => 'admin'
+    'password' => '1'
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'd61e02362291eeb5bef9217f00b47f52c588b92bfff92cc7fedcce11171bac2fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"j2gZtKkROM261ItMK-XjO7SFnz8pi09r\";}'
+]
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => '15e003f0a27e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.8'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.8.tar.xz'
+    'TERM' => 'xterm'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PECL_EXTENSIONS' => 'apcu ast ds ev hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr redis uuid xdebug xlswriter yaf yaml amqp memcache mcrypt'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '642843890b732e8af01cb661e823ae01472af1402f211c83009c9b3abd073245'
+    'TZ' => 'Asia/Shanghai'
+    'USER' => 'www-data'
+    'HTTP_CONTENT_LENGTH' => '390'
+    'HTTP_COOKIE' => '_csrf=d61e02362291eeb5bef9217f00b47f52c588b92bfff92cc7fedcce11171bac2fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22j2gZtKkROM261ItMK-XjO7SFnz8pi09r%22%3B%7D'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------220245329155477267382338'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_HOST' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'HTTP_POSTMAN_TOKEN' => 'bd492d25-8e20-47fe-8e5c-c6c4a57e7fd6'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.26.2'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'dev.mysoftvatapi-ci.fdccloud.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.18.0.3'
+    'REMOTE_PORT' => '53238'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.17.10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/mysoft_vat/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/site/login'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => '390'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=--------------------------220245329155477267382338'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/mysoft_vat/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1596620885.6833
+    'REQUEST_TIME' => 1596620885
+]

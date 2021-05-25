@@ -1,0 +1,22 @@
+{{define "chapter01/form_upload.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/" method="post" enctype="multipart/form-data">
+    <div>
+        用户名:<input type="text" name="name" />
+    </div>
+    <div>
+        <input type="file" name="file" />
+    </div>
+    <div>
+        <input type="submit" value="提交"/>
+    </div>
+</form>
+</body>
+</html>
+{{end}}

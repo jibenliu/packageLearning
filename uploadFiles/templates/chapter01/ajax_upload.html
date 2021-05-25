@@ -1,0 +1,42 @@
+{{define "chapter01/ajax_upload.html"}}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+    <input type="text" id="username">
+    <input type="file" id="file" multiple>
+    <button id="btn">提交</button>
+    </body>
+    <script>
+        $(function () {
+            $('#btn').on('click', function () {
+                let formData = new FormData();
+                const fileList = $("#file")[0].files;
+                const username = $('#username').val();
+                console.log(fileList)
+                //上传文件的
+                for (const item of fileList) {
+                    formData.append("file", item);
+                }
+                // 普通值
+                formData.append("username", username)
+                $.ajax({
+                    type: 'post',
+                    url: '/',
+                    data:formData,
+                    contentType:false,
+                    processData:false,
+                    success: function (response) {
+                        console.log(response)
+                    }
+                })
+            })
+        })
+    </script>
+    </html>
+
+{{end}}

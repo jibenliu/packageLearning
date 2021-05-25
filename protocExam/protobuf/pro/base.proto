@@ -1,0 +1,24 @@
+syntax = "proto3"; //版本
+
+package pro;
+
+enum PhoneType {
+    HOME = 0;
+    WORK = 1;
+}
+
+//每个message名都要大写
+message Phone {
+    PhoneType type = 1;
+    string number = 2;
+}
+
+message Person {
+    int32 id = 1;
+    string name = 2;
+    repeated Phone phones = 3; //定义数组类型
+}
+
+message ContactBook {
+    repeated Person persons = 1;
+}
