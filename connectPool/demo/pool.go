@@ -78,23 +78,23 @@ func (p *Pool) Release(r io.Closer) {
 }
 
 /**--------------------------分割线-------------------**/
-type dbConnection struct {
+type dbConnection1 struct {
 	ID int32
 }
 
-func (db *dbConnection) Close() error {
+func (db *dbConnection1) Close() error {
 	log.Println("关闭链接", db.ID)
 	return nil
 }
 
-var idCounter int32
+var idCounter1 int32
 
-func createConnection() (io.Closer, error) {
-	id := atomic.AddInt32(&idCounter, 1)
+func createConnection1() (io.Closer, error) {
+	id := atomic.AddInt32(&idCounter1, 1)
 	return &dbConnection{id}, nil
 }
 
-func dbQuery(query int, pool *Pool) {
+func dbQuery1(query int, pool *Pool) {
 	conn, err := pool.Acquire()
 	if err != nil {
 		log.Println(err)
@@ -109,16 +109,16 @@ func dbQuery(query int, pool *Pool) {
 
 const (
 	//模拟的最大goroutine
-	maxGoroutine = 5
+	maxGoroutine1 = 5
 	//资源池的大小
 	poolRes = 2
 )
 
 func main() {
 	var wg sync.WaitGroup
-	wg.Add(maxGoroutine)
+	wg.Add(maxGoroutine1)
 
-	p, err := NewPool(createConnection, poolRes)
+	p, err := NewPool(createConnection1, poolRes)
 	if err != nil {
 		log.Println(err)
 		return
@@ -126,7 +126,7 @@ func main() {
 
 	for query := 0; query < maxGoroutine; query++ {
 		go func(q int) {
-			dbQuery(q, p)
+			dbQuery1(q, p)
 			wg.Done()
 		}(query)
 	}

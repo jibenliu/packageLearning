@@ -7,20 +7,20 @@ import (
 )
 
 var (
-	// 初始化为 unknown，如果编译时没有传入这些值，则为 unknown
+	// GitCommitLog 初始化为 unknown，如果编译时没有传入这些值，则为 unknown
 	GitCommitLog   = "unknown"
 	GitStatus      = "unknown"
 	BuildTime      = "unknown"
 	BuildGoVersion = "unknown"
 )
 
-// 返回单行格式
+// StringifySingleLine 返回单行格式
 func StringifySingleLine() string {
 	return fmt.Sprintf("GitCommitLog=%s. GitStatus=%s. BuildTime=%s. GoVersion=%s. runtime=%s/%s.",
 		GitCommitLog, GitStatus, BuildTime, BuildGoVersion, runtime.GOOS, runtime.GOARCH)
 }
 
-// 返回多行格式
+// StringifyMultiLine 返回多行格式
 func StringifyMultiLine() string {
 	return fmt.Sprintf("GitCommitLog=%s\nGitStatus=%s\nBuildTime=%s\nGoVersion=%s\nruntime=%s/%s\n",
 		GitCommitLog, GitStatus, BuildTime, BuildGoVersion, runtime.GOOS, runtime.GOARCH)

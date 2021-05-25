@@ -1,10 +1,10 @@
 package server
 
 import (
+	"dependencyInjection/config"
+	"dependencyInjection/service"
 	"encoding/json"
 	"net/http"
-	"newTest/dependencyInjection/config"
-	"newTest/dependencyInjection/service"
 )
 
 type Server struct {

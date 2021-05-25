@@ -1,9 +1,9 @@
 package main
 
 import (
+	"curl/util"
 	"fmt"
 	"net/http"
-	"newTest/curl/util"
 )
 
 func main() {

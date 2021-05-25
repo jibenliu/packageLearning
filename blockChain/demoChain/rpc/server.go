@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
-	"newTest/blockChain/demoChain/core"
+	"/blockChain/demoChain/core"
 )
 
 var blockChain *core.BlockChain

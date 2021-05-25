@@ -2,7 +2,7 @@ package repository
 
 import (
 	"database/sql"
-	"newTest/dependencyInjection/model"
+	"dependencyInjection/model"
 )
 
 type PersonRepository struct {

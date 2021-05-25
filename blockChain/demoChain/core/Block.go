@@ -3,6 +3,7 @@ package core
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"strconv"
 	"time"
 )
 
@@ -16,7 +17,7 @@ type Block struct {
 }
 
 func calculateHash(b Block) string {
-	blockData := string(b.Index) + string(b.Timestamp) + b.PrevBlockHash + b.Data
+	blockData := strconv.FormatInt(b.Index, 10) + strconv.FormatInt(b.Timestamp, 10) + b.PrevBlockHash + b.Data
 	hashBytes := sha256.Sum256([]byte(blockData))
 	return hex.EncodeToString(hashBytes[:])
 }

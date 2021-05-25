@@ -5,7 +5,9 @@ import (
 	"github.com/otiai10/gosseract/v2"
 	"io/ioutil"
 )
+
 var client *gosseract.Client
+
 func main() {
 	client = gosseract.NewClient()
 	defer client.Close()
@@ -18,12 +20,12 @@ func getFileList(path string) {
 		if file.IsDir() {
 			getFileList(path + file.Name() + "/")
 		} else {
-			ocrImage(path+file.Name())
+			ocrImage(path + file.Name())
 		}
 	}
 }
 
-func ocrImage(path string)  {
+func ocrImage(path string) {
 	client.SetImage(path)
 	text, _ := client.Text()
 	fmt.Println(text)

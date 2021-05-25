@@ -1,8 +1,8 @@
 package main
 
 import (
+	customPool "connectPool/poolExam/src"
 	"context"
-	custom_pool "poolExam/src"
 )
 
 // FROM https://juejin.im/post/5d7471ab51882531ea0649e6
@@ -63,11 +63,11 @@ import (
 func main() {
 
 	ctx := context.Background()
-	config := &custom_pool.Config{
+	config := &customPool.Config{
 		MaxConn: 2,
 		MaxIdle: 1,
 	}
-	conn := custom_pool.Prepare(ctx, config)
+	conn := customPool.Prepare(ctx, config)
 	if _, err := conn.New(ctx); err != nil {
 		return
 	}

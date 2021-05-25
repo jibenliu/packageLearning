@@ -1,6 +1,6 @@
 package main
 
-import "newTest/blockChain/demoChain/core"
+import "blockChain/demoChain/core"
 
 func main()  {
 	bc := core.NewBlockChain() //创世区块

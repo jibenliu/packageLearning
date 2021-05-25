@@ -73,7 +73,7 @@ func getUserInfo(userId int) (user UserInfo, err error) {
 	return
 }
 
-//用户信息缓存
+// UserCache 用户信息缓存
 type UserCache struct {
 	Users map[int]UserInfo
 	sync.RWMutex

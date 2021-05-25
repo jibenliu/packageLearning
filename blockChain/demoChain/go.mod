@@ -1,3 +1,3 @@
-module newTest/blockChain/demoChain
+module blockChain/demoChain
 
-go 1.14
+go 1.16

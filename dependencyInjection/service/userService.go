@@ -1,9 +1,9 @@
 package service
 
 import (
-	"newTest/dependencyInjection/config"
-	"newTest/dependencyInjection/model"
-	"newTest/dependencyInjection/repository"
+	"dependencyInjection/config"
+	"dependencyInjection/model"
+	"dependencyInjection/repository"
 )
 
 type PersonService struct {

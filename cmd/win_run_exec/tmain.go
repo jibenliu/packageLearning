@@ -15,7 +15,7 @@ func main() {
 
 }
 
-//启动exe
+// RunExe 启动exe
 func RunExe(exeName string) {
 	fmt.Println("启动 exe：", exeName)
 	args := []string{"golang", "语言社区"}
@@ -32,7 +32,7 @@ func getCurrentPath() string {
 	if len(PathData) == 0 {
 		s, _ := exec.LookPath(os.Args[0])
 		i := strings.LastIndex(s, "//")
-		path := string(s[0 : i+1])
+		path := s[0 : i+1]
 		PathData = path
 		return path
 	}

@@ -92,7 +92,7 @@ func (p *GenericPool) getOrCreate() (io.Closer, error) {
 	return closer, nil
 }
 
-// 释放单个资源到链接池
+// Release 释放单个资源到链接池
 func (p *GenericPool) Release(closer io.Closer) error {
 	if p.closed {
 		return ErrPoolClosed
@@ -103,7 +103,7 @@ func (p *GenericPool) Release(closer io.Closer) error {
 	return nil
 }
 
-// 关闭单个资源
+// Close 关闭单个资源
 func (p *GenericPool) Close(closer io.Closer) error {
 	p.Lock()
 	closer.Close()
@@ -112,7 +112,7 @@ func (p *GenericPool) Close(closer io.Closer) error {
 	return nil
 }
 
-// 关闭连接池，释放所有资源
+// Shutdown 关闭连接池，释放所有资源
 func (p *GenericPool) Shutdown() error {
 	if p.closed {
 		return ErrPoolClosed

@@ -6,10 +6,10 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"math"
 	"net"
 	"os"
 	"time"
-	"math"
 )
 
 type ICMP struct {
@@ -21,8 +21,8 @@ type ICMP struct {
 }
 
 var (
-	icmp  ICMP
-	laddr = net.IPAddr{IP: net.ParseIP("ip")}
+	icmp    ICMP
+	laddr   = net.IPAddr{IP: net.ParseIP("ip")}
 	num     int
 	timeout int64
 	size    int
@@ -36,9 +36,9 @@ func main() {
 	if len(args) < 2 {
 		Usage()
 	}
-	desIp := args[len(args) - 1]
+	desIp := args[len(args)-1]
 
-	conn, err := net.DialTimeout("ip:icmp", desIp, time.Duration(timeout) * time.Millisecond)
+	conn, err := net.DialTimeout("ip:icmp", desIp, time.Duration(timeout)*time.Millisecond)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -59,12 +59,12 @@ func main() {
 	buffer.Write(data)
 	data = buffer.Bytes()
 
-	var SuccessTimes int    // 成功次数
-	var FailTimes int       // 失败次数
+	var SuccessTimes int // 成功次数
+	var FailTimes int    // 失败次数
 	var minTime int = int(math.MaxInt32)
 	var maxTime int
 	var totalTime int
-	for i := 0;i < num;i++ {
+	for i := 0; i < num; i++ {
 		icmp.SequenceNum = uint16(1)
 		// 检验和设为0
 		data[2] = byte(0)
@@ -94,7 +94,7 @@ func main() {
 		if minTime > et {
 			minTime = et
 		}
-		if maxTime <et {
+		if maxTime < et {
 			maxTime = et
 		}
 		totalTime += et
@@ -103,10 +103,10 @@ func main() {
 		time.Sleep(1 * time.Second)
 	}
 	fmt.Printf("\n%s 的 Ping 统计信息:\n", desIp)
-	fmt.Printf("    数据包: 已发送 = %d，已接收 = %d，丢失 = %d (%.2f%% 丢失)，\n", SuccessTimes + FailTimes, SuccessTimes, FailTimes, float64(FailTimes * 100) / float64(SuccessTimes + FailTimes))
+	fmt.Printf("    数据包: 已发送 = %d，已接收 = %d，丢失 = %d (%.2f%% 丢失)，\n", SuccessTimes+FailTimes, SuccessTimes, FailTimes, float64(FailTimes*100)/float64(SuccessTimes+FailTimes))
 	if maxTime != 0 && minTime != int(math.MaxInt32) {
 		fmt.Printf("往返行程的估计时间(以毫秒为单位):\n")
-		fmt.Printf("    最短 = %dms，最长 = %dms，平均 = %dms\n", minTime, maxTime, totalTime / SuccessTimes)
+		fmt.Printf("    最短 = %dms，最长 = %dms，平均 = %dms\n", minTime, maxTime, totalTime/SuccessTimes)
 	}
 }
 
@@ -115,7 +115,7 @@ func CheckSum(data []byte) uint16 {
 	var length = len(data)
 	var index int
 	for length > 1 { // 溢出部分直接去除
-		sum += uint32(data[index]) << 8 + uint32(data[index+1])
+		sum += uint32(data[index])<<8 + uint32(data[index+1])
 		index += 2
 		length -= 2
 	}
@@ -129,8 +129,8 @@ func CheckSum(data []byte) uint16 {
 	   第二次高16位+低16位：0001 + fffe = ffff
 	   即推出一个结论，只要第一次高16位+低16位的结果，再进行之前的计算结果用到高16位+低16位，即可处理溢出情况
 	*/
-	sum = uint32(sum >> 16) + uint32(sum)
-	sum = uint32(sum >> 16) + uint32(sum)
+	sum = uint32(sum>>16) + uint32(sum)
+	sum = uint32(sum>>16) + uint32(sum)
 	return uint16(^sum)
 }
 

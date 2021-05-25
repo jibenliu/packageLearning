@@ -1,12 +1,11 @@
 package main
 
 import (
-	"newTest/dependencyInjection/config"
-	"newTest/dependencyInjection/repository"
-	"newTest/dependencyInjection/server"
-	"newTest/dependencyInjection/service"
+	"dependencyInjection/config"
+	"dependencyInjection/repository"
+	"dependencyInjection/server"
+	"dependencyInjection/service"
 )
-
 
 func main() {
 	cfg := config.NewConfig()

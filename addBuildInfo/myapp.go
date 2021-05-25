@@ -1,11 +1,10 @@
 package main
 
 import (
+	"addBuildInfo/bininfo"
 	"flag"
 	"fmt"
 	"os"
-
-	"newTest/addBuildInfo/bininfo"
 )
 
 func main() {

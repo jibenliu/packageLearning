@@ -1,11 +1,11 @@
 package main
 
 import (
+	"dependencyInjection/config"
+	"dependencyInjection/repository"
+	"dependencyInjection/server"
+	"dependencyInjection/service"
 	"go.uber.org/dig"
-	"newTest/dependencyInjection/config"
-	"newTest/dependencyInjection/repository"
-	"newTest/dependencyInjection/server"
-	"newTest/dependencyInjection/service"
 )
 
 func BuildContainer() *dig.Container {
