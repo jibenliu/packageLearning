@@ -1,5 +1,5 @@
-module github.com/shaoyuan1943/fastudp
+module fastudp
 
-go 1.15
+go 1.16
 
 require golang.org/x/sys v0.0.0-20210309074719-68d13333faf2

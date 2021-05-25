@@ -6,8 +6,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/shaoyuan1943/fastudp/netpoll"
-	"github.com/shaoyuan1943/fastudp/netudp"
+	"fastudp/netpoll"
+	"fastudp/netudp"
 )
 
 var (

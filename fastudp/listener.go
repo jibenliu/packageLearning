@@ -1,7 +1,7 @@
 package fastudp
 
 import (
-	"github.com/shaoyuan1943/fastudp/netudp"
+	"fastudp/netudp"
 	"golang.org/x/sys/unix"
 )
 
