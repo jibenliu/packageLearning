@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// Runner在给定的超时时间内执行一组任务，并且在操作系统发送中断信号时结束这些任务
+// Runner 在给定的超时时间内执行一组任务，并且在操作系统发送中断信号时结束这些任务
 type Runner struct {
 	// interrupt通道报告从操作系统发送的信号
 	interrupt chan os.Signal
@@ -29,7 +29,7 @@ var ErrTimeout = errors.New("received timeout")
 // ErrInterrupt 会在接收到操作系统的事件时返回
 var ErrInterrupt = errors.New("received interrupt")
 
-// new 返回一个新的准备使用的Runner
+// NewRunner 返回一个新的准备使用的Runner
 func NewRunner(d time.Duration) *Runner {
 	return &Runner{
 		interrupt: make(chan os.Signal, 1),
@@ -38,12 +38,12 @@ func NewRunner(d time.Duration) *Runner {
 	}
 }
 
-// Add将一个任务附加到Runner上。这个任务是一个接收一个int类型的ID作为参数的函数
+// Add 将一个任务附加到Runner上。这个任务是一个接收一个int类型的ID作为参数的函数
 func (r *Runner) Add(tasks ...func(int)) {
 	r.tasks = append(r.tasks, tasks...)
 }
 
-// Start执行所有任务，并监视通道事件
+// Start 执行所有任务，并监视通道事件
 func (r *Runner) Start() error {
 	// 我们希望接收所有中断信号
 	signal.Notify(r.interrupt, os.Interrupt)

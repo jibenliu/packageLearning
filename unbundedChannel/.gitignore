@@ -1,0 +1,4 @@
+*.sum
+vendor
+.idea
+.git
