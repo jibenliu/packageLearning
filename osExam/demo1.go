@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-// go run demo1.go -a c
+// go run main.go -a c
 func main() {
 	//str := os.Args[0]
 	//fmt.Println(str)
