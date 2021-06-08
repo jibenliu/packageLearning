@@ -16,11 +16,12 @@ func _() {
 	_ = x[COVID19-5]
 	_ = x[HIV-6]
 	_ = x[OIV-7]
+	_ = x[DIV-8]
 }
 
-const _Pill_name = "PlaceboAspirinIbuprofenParacetamolAcetaminophenCOVID19HIVOIV"
+const _Pill_name = "PlaceboAspirinIbuprofenParacetamolAcetaminophenCOVID19HIVOIVDIV"
 
-var _Pill_index = [...]uint8{0, 7, 14, 23, 34, 47, 54, 57, 60}
+var _Pill_index = [...]uint8{0, 7, 14, 23, 34, 47, 54, 57, 60, 63}
 
 func (i Pill) String() string {
 	if i < 0 || i >= Pill(len(_Pill_index)-1) {

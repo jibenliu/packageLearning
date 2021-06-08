@@ -12,5 +12,5 @@ const (
 	COVID19
 	HIV
 	OIV
-	SSAS = HIV
+	DIV
 )

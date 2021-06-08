@@ -13,6 +13,7 @@ var b = func() {
 }
 
 func main() {
+
 	a := Person{}
 	fmt.Printf("a type:%T\n", a)
 	fmt.Printf("a=%s\n", reflect.TypeOf(a))
