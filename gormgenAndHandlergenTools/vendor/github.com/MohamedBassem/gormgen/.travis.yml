@@ -1,0 +1,9 @@
+language: go
+install: make
+go:
+  - 1.7
+before_install:
+  - go get github.com/stretchr/testify/...
+script:
+  - go install ./...
+  - make test

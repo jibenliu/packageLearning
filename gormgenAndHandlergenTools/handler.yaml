@@ -1,0 +1,32 @@
+functions:
+  example1:
+    query:
+      page:
+        type: uint
+    body:
+      type: gen.Template
+      import: github.com/Karitham/handlergen/gen
+  example2:
+    query:
+      user_id:
+        type: uint
+      page:
+        type: int
+      per_page:
+        type: int
+      user:
+        type: string
+  example3:
+    path:
+      user_id:
+        type: int
+    header:
+      api_token:
+        type: string
+    query:
+      page:
+        type: int
+      per_page:
+        type: int
+      user:
+        type: string
