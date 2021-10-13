@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// Pool管理一组可以安全地在多个goroutine间共享的资源。被管理的资源必须实现io.Closer接口
+// Pool 管理一组可以安全地在多个goroutine间共享的资源。被管理的资源必须实现io.Closer接口
 type Pool struct {
 	m         sync.Mutex
 	resources chan io.Closer
@@ -18,10 +18,10 @@ type Pool struct {
 	closed    bool
 }
 
-// ErrPoolClosed表示请求(Acquire)了一个已经关闭的池
+// ErrPoolClosed 表示请求(Acquire)了一个已经关闭的池
 var ErrPoolClosed = errors.New("Pool has been closed.")
 
-// New创建一个用来管理资源的池。这个池需要一个可以分配新资源的函数，并规定池的大小
+// NewPool 创建一个用来管理资源的池。这个池需要一个可以分配新资源的函数，并规定池的大小
 func NewPool(fn func() (io.Closer, error), size uint) (*Pool, error) {
 	if size <= 0 {
 		return nil, errors.New("Size value too small.")
@@ -32,7 +32,7 @@ func NewPool(fn func() (io.Closer, error), size uint) (*Pool, error) {
 	}, nil
 }
 
-// Acquire从池中获取一个资源
+// Acquire 从池中获取一个资源
 func (p *Pool) Acquire() (io.Closer, error) {
 	select {
 	// 检查是否有空闲的资源
@@ -48,7 +48,7 @@ func (p *Pool) Acquire() (io.Closer, error) {
 	}
 }
 
-// Release将一个使用后的资源放回池里
+// Release 将一个使用后的资源放回池里
 func (p *Pool) Release(r io.Closer) {
 	// 保证本操作和Close操作的安全
 	p.m.Lock()
@@ -70,7 +70,7 @@ func (p *Pool) Release(r io.Closer) {
 	}
 }
 
-// Close会让资源池停止工作，并关闭所有现有的资源
+// Close 会让资源池停止工作，并关闭所有现有的资源
 func (p *Pool) Close() {
 	// 保证本操作与Release操作的安全
 	p.m.Lock()
@@ -95,7 +95,7 @@ const (
 	pooledResources = 2  // 池中的资源的数量
 )
 
-// dbConnection模拟要共享的资源
+// dbConnection 模拟要共享的资源
 type dbConnection struct {
 	ID int32
 }
@@ -140,7 +140,7 @@ func main() {
 	p.Close()
 }
 
-// performQueries用来测试链接的资源池
+// performQueries 用来测试链接的资源池
 func performQueries(query int, p *Pool) {
 	// 从池中请求一个链接
 	conn, err := p.Acquire()
