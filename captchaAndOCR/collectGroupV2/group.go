@@ -9,8 +9,8 @@ package collectGroupV2
 // collecting goroutine task information
 
 import (
-"context"
-"sync"
+	"context"
+	"sync"
 )
 
 // Group collection group

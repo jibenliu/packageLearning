@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"runtime"
 	"strings"
 	"syscall"
@@ -82,6 +84,16 @@ func GetProcessName() string {
 	return "unknown"
 }
 
+// GetAppPath
+// when the project is running on build way to get path
+func GetAppPath() string {
+	file, _ := exec.LookPath(os.Args[0])
+	path, _ := filepath.Abs(file)
+	index := strings.LastIndex(path, string(os.PathSeparator))
+
+	return path[:index]
+}
+
 // GetComputerName 获取机器名
 func GetComputerName() string {
 	sHostName, _ := os.Hostname()
@@ -105,4 +117,5 @@ func main() {
 	fmt.Printf("ip address:%q err is %s\n", ipv4, err)
 	fmt.Printf("process name:%q\n", GetProcessName())
 	fmt.Printf("computer name:%q\n", GetComputerName())
+	fmt.Printf("app path:%q\n", GetAppPath())
 }
