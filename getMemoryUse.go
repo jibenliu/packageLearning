@@ -17,7 +17,7 @@ func readMemStats() {
 	log.Printf(" ===> Alloc:%d(bytes) HeapIdle:%d(bytes) HeapReleased:%d(bytes)", ms.Alloc, ms.HeapIdle, ms.HeapReleased)
 }
 
-func test() {
+func makeMemoryTest() {
 	//slice 会动态扩容，用slice来做堆内存申请
 	container := make([]int, 8)
 
@@ -42,7 +42,7 @@ func main() {
 	log.Println(" ===> [Start].")
 
 	readMemStats()
-	test()
+	makeMemoryTest()
 	readMemStats()
 
 	log.Println(" ===> [force gc].")
@@ -60,6 +60,5 @@ func main() {
 
 	time.Sleep(3600 * time.Second) //睡眠，保持程序不退出
 }
-
 
 // http://127.0.0.1:10000/debug/pprof/heap?debug=1

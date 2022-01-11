@@ -1,0 +1,22 @@
+goos: linux
+goarch: amd64
+pkg: packageLearning/setBench
+cpu: Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz
+BenchmarkSetWithBoolValueWrite
+BenchmarkSetWithBoolValueWrite-16         	       1	2833994545 ns/op	883571224 B/op	  614054 allocs/op
+BenchmarkSetWithBoolValueWrite-16         	       1	2263719587 ns/op	883602552 B/op	  614239 allocs/op
+BenchmarkSetWithBoolValueWrite-16         	       1	2287156523 ns/op	883547704 B/op	  613680 allocs/op
+BenchmarkSetWithInterfaceValueWrite
+BenchmarkSetWithInterfaceValueWrite-16    	       1	3793230665 ns/op	1981641536 B/op	  614141 allocs/op
+BenchmarkSetWithInterfaceValueWrite-16    	       1	3025819277 ns/op	1981517424 B/op	  613572 allocs/op
+BenchmarkSetWithInterfaceValueWrite-16    	       1	2884252775 ns/op	1981463576 B/op	  613316 allocs/op
+BenchmarkSetWithIntValueWrite
+BenchmarkSetWithIntValueWrite-16          	       1	2466702381 ns/op	1412127592 B/op	  613751 allocs/op
+BenchmarkSetWithIntValueWrite-16          	       1	2411108779 ns/op	1412108680 B/op	  613741 allocs/op
+BenchmarkSetWithIntValueWrite-16          	       1	2428709262 ns/op	1412161976 B/op	  613990 allocs/op
+BenchmarkSetWithStructValueWrite
+BenchmarkSetWithStructValueWrite-16       	       1	2212953473 ns/op	802492160 B/op	  614395 allocs/op
+BenchmarkSetWithStructValueWrite-16       	       1	2225390581 ns/op	802533296 B/op	  614909 allocs/op
+BenchmarkSetWithStructValueWrite-16       	       1	2288865126 ns/op	802486800 B/op	  614325 allocs/op
+PASS
+ok  	packageLearning/setBench	31.168s
