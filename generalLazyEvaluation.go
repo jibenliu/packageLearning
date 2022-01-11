@@ -27,7 +27,7 @@ func main() {
 func BuildLazyEvaluator(evalFunc EvalFunc, initState Any) func() Any {
 	retValChan := make(chan Any)
 	loopFunc := func() {
-		var actState Any = initState
+		var actState = initState
 		var retVal Any
 		for {
 			retVal, actState = evalFunc(actState)
