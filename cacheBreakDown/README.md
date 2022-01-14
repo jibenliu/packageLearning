@@ -1,0 +1,1 @@
+#refer:[https://www.syst.top/posts/go/synconce/](https://www.syst.top/posts/go/synconce/)
