@@ -1,10 +1,10 @@
 package main
 
 import (
+	"blockChain/demoChain/core"
 	"encoding/json"
 	"io"
 	"net/http"
-	"/blockChain/demoChain/core"
 )
 
 var blockChain *core.BlockChain
