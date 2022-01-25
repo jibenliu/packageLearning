@@ -1,0 +1,1 @@
+#refer:[Go 实现跳跃表](https://mp.weixin.qq.com/s?__biz=MzI1MTIzMzI2MA==&mid=2650579387&idx=2&sn=78b13542875e6d812849e00e2aa366fa&chksm=f1fe1738c6899e2ebc82b54380574de53d9ebcdbfa399f19bd89adb84bd004c04887321cd5ae&mpshare=1&scene=24&srcid=0108TuzYAQKAZ5TlvE1bGFa7&sharer_sharetime=1641647363167&sharer_shareid=c399d554da147fe89f1dde693ead9c47#rd)

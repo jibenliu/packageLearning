@@ -1,0 +1,1 @@
+### refer: [使用 Go 开发MySQL binlog同步工具](https://mp.weixin.qq.com/s/UHkEC72g60cUHYFiMQ2TBQ)

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"reflect"
 	"runtime"
 	"sync/atomic"
 	"time"
@@ -26,6 +27,7 @@ func main() {
 	waitForWorkers()
 	fmt.Println(matches, "matches")
 	fmt.Println(time.Since(start))
+	reflect.Select(searchRequest)
 }
 
 func waitForWorkers() { //只在g0里面运行
