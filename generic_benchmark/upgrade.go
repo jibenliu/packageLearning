@@ -5,6 +5,10 @@ type SubtractAble interface {
 	int | int64 | float32
 }
 
+func Add[S SubtractAble](a, b S) S {
+	return a + b
+}
+
 // MoveAble is the interace for moving an Entity
 type MoveAble[S SubtractAble] interface {
 	Move(S)
@@ -25,10 +29,10 @@ type Person[S SubtractAble] struct {
 }
 
 func (p *Person[S]) Move(meters S) {
-	p.DistanceMoved += meters
+	p.DistanceMoved = Add(p.DistanceMoved, meters)
 }
 func (c *Car[S]) Move(meters S) {
-	c.DistanceMoved += meters
+	c.DistanceMoved = Add(c.DistanceMoved, meters)
 }
 
 // Move is a generic function that takes in a Generic MoveAble and moves it
