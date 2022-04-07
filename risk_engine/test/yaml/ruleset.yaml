@@ -1,0 +1,30 @@
+rulesets:
+  - ruleset:
+    ruleset_name: test_ruleset
+    ruleset_category: internal
+    rule_exec: allrun  
+    depends: [feature_1,feature_2,feature_3]
+    rules: 
+    - rule: 
+      rule_name: "rule_1"
+      conditions:
+      - condition:
+        feature: feature_1
+        operator: GT
+        value: 50
+      logic: AND
+      decision: reject
+    - rule: 
+      rule_id: 139
+      rule_name: "rule_2"
+      conditions:
+      - condition:
+        feature: feature_2
+        operator: LT
+        value: 18
+      - condition:
+        feature: feature_3
+        operator: GT
+        value: 50
+      logic: OR
+      decision: reject
