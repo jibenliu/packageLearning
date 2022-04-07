@@ -1,0 +1,1 @@
+#refer:[知乎热议：Go 有了泛型性能会不会提升一个档次？](https://mp.weixin.qq.com/s/EY4iR5Qo2Ci6b0Jl8ERMgQ)
