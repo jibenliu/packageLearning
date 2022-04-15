@@ -1,0 +1,21 @@
+@startuml
+class Address {
++A: string
++Street: string
++City: string
++PostalCode: string
++Country: string
++CustomChannel: chan string
++AnInterface: *interface
++FullAddress(withPostalCode bool): string
+}
+class User {
++FirstName: string
++LastName: string
++Age: uint8
++Address: *Address
+-privateAddress: Address
++*SetFirstName(firstName string): 
+}
+User --> Address
+@enduml
