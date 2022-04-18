@@ -1,0 +1,1 @@
+# refer:[Go 实现 RabbitMQ 延迟任务详解](https://mp.weixin.qq.com/s?__biz=MzAwNjMxMTgwNw==&mid=2247491120&idx=1&sn=be1f2abf114a4fe9e063d08022f279e9&chksm=9b0e0420ac798d369c9f6c29a1a664d9865ea1494be631ea6c6886e5e4e5c45d2f28588e5231&mpshare=1&scene=24&srcid=0416riQpPUFOxss5FYCzTlpq&sharer_sharetime=1650101144655&sharer_shareid=4ad3ff99d22972fcffb68d69ca6b98a0#rd)
