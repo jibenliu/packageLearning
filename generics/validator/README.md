@@ -1,0 +1,1 @@
+refer:[如何在 Gin 框架中使用泛型构建完全解耦的请求验证层](https://mp.weixin.qq.com/s/OI6jrqAsgHm1KyF2wZLJhQ)

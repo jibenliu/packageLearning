@@ -1,7 +1,6 @@
 package main
 
 import (
-	"constraints"
 	"fmt"
 	"math/rand"
 )
@@ -114,7 +113,7 @@ func Fn0[T, U any](t T, u U) {
 	fmt.Println(t, u)
 }
 
-func Fn1[T constraints.Integer]() (t T) {
+func Fn1[T Integer]() (t T) {
 	return T(rand.Int()) // 使用类型参数强制转换类型
 }
 
