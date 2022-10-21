@@ -1,0 +1,1 @@
+refer:[RabbitMQ Go客户端教程6——RPC](https://mp.weixin.qq.com/s/4cSfAFo11mWJhZ9txW3B1A)
