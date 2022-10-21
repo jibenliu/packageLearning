@@ -1,10 +1,9 @@
 package gock_demo
 
 import (
-"testing"
+	"testing"
 
-"github.com/stretchr/testify/assert"
-"gopkg.in/h2non/gock.v1"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetResultByAPI(t *testing.T) {
@@ -38,4 +37,3 @@ func TestGetResultByAPI(t *testing.T) {
 
 	assert.True(t, gock.IsDone()) // 断言mock被触发
 }
-
