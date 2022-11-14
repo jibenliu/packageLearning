@@ -1,0 +1,48 @@
+syntax = "proto3";
+package proto2xmind.pkg;
+option go_package = "./main";
+message Request{
+  //这是第一个字段的注释 枚举值有 1，2，3，4
+  string field1 = 1;
+  //这是第二个字段的注释
+  string field2 = 2;
+  oneof kind {
+    string name = 3;
+    //这是oneof第二个字段的注释
+    int32  code = 4;
+  }
+}
+
+service myService{
+  rpc Hello(Request)returns (Response){}
+  rpc Hello1(Request)returns (Response){}
+  rpc Hello2(Request2)returns (Response2){}
+}
+
+message Response{
+  //这是返回值字段的注释
+  string field3 = 1;
+  string field4 = 2;
+}
+
+message Request2 {
+  string field1 = 1;
+  string field2 = 2;
+  oneof kind {
+    string name = 3;
+    int32  code = 4;
+  }
+}
+service yourService{
+  rpc Hello(Request)returns (Response){}
+  rpc Hello1(Request)returns (Response){}
+  rpc Hello2(Request2)returns (Response2){}
+}
+
+
+message Response2{
+  string field3 = 1;
+  string field4 = 2;
+  //这是嵌套字段的注释
+  Response Response = 3;
+}
