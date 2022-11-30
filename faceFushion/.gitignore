@@ -1,0 +1,3 @@
+data/generate/*
+vendor
+config.yml
