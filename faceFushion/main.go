@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -37,11 +38,36 @@ var BabyFaceModelMap = map[string]string{
 	"qc_314596_995740_18": "baby_3y_girl_1",
 }
 
+//	func main() {
+//		now := time.Now()
+//		logDir := "./data/male"
+//		var files []string
+//		err := filepath.Walk(logDir, func(path string, info os.FileInfo, err error) error {
+//			if !strings.Contains(path, ".DS_Store") && !info.IsDir() {
+//				files = append(files, path)
+//			}
+//			return nil
+//		})
+//		if err != nil {
+//			panic(err)
+//		}
+//		for _, fi := range files {
+//			for modelId, templateName := range BabyFaceModelMap {
+//				url := younger(fi)
+//				ret := faceFusion([]string{url}, modelId)
+//				saveImage(ret, templateName+"_"+strings.TrimSuffix(filepath.Base(fi), filepath.Ext(fi)))
+//			}
+//		}
+//
+//		period := time.Since(now)
+//		fmt.Println("全部耗时时间: ", period)
+//	}
+
 func main() {
 	now := time.Now()
-	logDir := "./data/male"
+	dataDir := "./data/age_changer_data"
 	var files []string
-	err := filepath.Walk(logDir, func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(dataDir, func(path string, info os.FileInfo, err error) error {
 		if !strings.Contains(path, ".DS_Store") && !info.IsDir() {
 			files = append(files, path)
 		}
@@ -51,13 +77,11 @@ func main() {
 		panic(err)
 	}
 	for _, fi := range files {
-		for modelId, templateName := range BabyFaceModelMap {
-			url := younger(fi)
-			ret := faceFusion([]string{url}, modelId)
-			saveImage(ret, templateName+"_"+strings.TrimSuffix(filepath.Base(fi), filepath.Ext(fi)))
+		for i := 20; i <= 80; i = i + 4 {
+			url := younger(fi, int64(i))
+			saveImage(url, "age_"+strconv.Itoa(i)+"_"+strings.TrimSuffix(filepath.Base(fi), filepath.Ext(fi)))
 		}
 	}
-
 	period := time.Since(now)
 	fmt.Println("全部耗时时间: ", period)
 }
@@ -103,11 +127,11 @@ func faceFusion(urls []string, modelId string) string {
 	return *response.Response.FusedImage
 }
 
-func younger(filePath string) string {
+func younger(filePath string, age int64) string {
 	client := getClient(AgeChangerEndPoint)
 	request := client2.NewChangeAgePicRequest()
 	request.AgeInfos = []*client2.AgeInfo{
-		{Age: common.Int64Ptr(10)},
+		{Age: common.Int64Ptr(age)},
 	}
 	file, err := os.Open(filePath)
 

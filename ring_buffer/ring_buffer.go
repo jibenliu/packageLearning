@@ -2,7 +2,6 @@ package ring_buffer
 
 import (
 	"errors"
-	"packageLearning"
 )
 
 var ErrIsEmpty = errors.New("ringbuffer is empty")
@@ -30,7 +29,7 @@ func NewRingBuffer[T any](initialSize int) *RingBuffer[T] {
 	return &RingBuffer[T]{
 		buf:         make([]T, initialSize),
 		initialSize: initialSize,
-		main.size:   initialSize,
+		size:        initialSize,
 	}
 }
 

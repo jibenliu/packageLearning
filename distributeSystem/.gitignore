@@ -1,0 +1,5 @@
+vendor
+go.sum
+main
+distributeSystem
+tmp/*

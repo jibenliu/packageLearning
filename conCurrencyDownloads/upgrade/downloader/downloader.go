@@ -13,8 +13,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-
-	"github.com/schollz/progressbar/v3"
 )
 
 type Config struct {
@@ -35,7 +33,7 @@ func getFilenameAndExt(fileName string) (string, string) {
 	return strings.TrimSuffix(fileName, ext), ext
 }
 
-type downloader struct {
+type Downloader struct {
 	// true if the download has been paused
 	Paused bool
 	config *Config
@@ -47,19 +45,19 @@ type downloader struct {
 	bar *progressbar.ProgressBar
 }
 
-func (d *downloader) Pause() {
+func (d *Downloader) Pause() {
 	d.Paused = true
 	d.cancel()
 }
 
-func (d *downloader) Resume() {
+func (d *Downloader) Resume() {
 	d.config.Resume = true
 	d.Paused = false
 	d.Download()
 }
 
 // Returns the progress bar's state
-func (d *downloader) ProgressState() progressbar.State {
+func (d *Downloader) ProgressState() progressbar.State {
 	if d.bar != nil {
 		return d.bar.State()
 	}
@@ -70,7 +68,7 @@ func (d *downloader) ProgressState() progressbar.State {
 // Add a number to the filename if file already exist
 // For instance, if filename `hello.pdf` already exist
 // it returns hello(1).pdf
-func (d *downloader) renameFilenameIfNecessary() {
+func (d *Downloader) renameFilenameIfNecessary() {
 	if d.config.Resume {
 		return // in resume mode, no need to rename
 	}
@@ -90,7 +88,7 @@ func (d *downloader) renameFilenameIfNecessary() {
 	}
 }
 
-func New(url string) (*downloader, error) {
+func New(url string) (*Downloader, error) {
 	if url == "" {
 		return nil, errors.New("Url is empty")
 	}
@@ -103,7 +101,7 @@ func New(url string) (*downloader, error) {
 	return NewFromConfig(config)
 }
 
-func NewFromConfig(config *Config) (*downloader, error) {
+func NewFromConfig(config *Config) (*Downloader, error) {
 	if config.Url == "" {
 		return nil, errors.New("Url is empty")
 	}
@@ -118,7 +116,7 @@ func NewFromConfig(config *Config) (*downloader, error) {
 		config.CopyBufferSize = 1024
 	}
 
-	d := &downloader{config: config}
+	d := &Downloader{config: config}
 
 	// rename file if such file already exist
 	d.renameFilenameIfNecessary()
@@ -126,11 +124,11 @@ func NewFromConfig(config *Config) (*downloader, error) {
 	return d, nil
 }
 
-func (d *downloader) getPartFilename(partNum int) string {
+func (d *Downloader) getPartFilename(partNum int) string {
 	return d.config.OutFilename + ".part" + strconv.Itoa(partNum)
 }
 
-func (d *downloader) Download() {
+func (d *Downloader) Download() {
 	ctx, cancel := context.WithCancel(context.Background())
 	d.context = ctx
 	d.cancel = cancel
@@ -152,7 +150,7 @@ func (d *downloader) Download() {
 }
 
 // Server does not support partial download for this file
-func (d *downloader) simpleDownload() {
+func (d *Downloader) simpleDownload() {
 	if d.config.Resume {
 		log.Fatal("Cannot resume. Must be downloaded again")
 	}
@@ -182,7 +180,7 @@ func (d *downloader) simpleDownload() {
 }
 
 // download concurrently
-func (d *downloader) multiDownload(contentSize int) {
+func (d *Downloader) multiDownload(contentSize int) {
 	partSize := contentSize / d.config.Concurrency
 
 	startRange := 0
@@ -223,7 +221,7 @@ func (d *downloader) multiDownload(contentSize int) {
 	}
 }
 
-func (d *downloader) merge() {
+func (d *Downloader) merge() {
 	destination, err := os.OpenFile(d.config.OutFilename, os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		log.Fatal(err)
@@ -242,7 +240,7 @@ func (d *downloader) merge() {
 	}
 }
 
-func (d *downloader) downloadPartial(rangeStart, rangeStop int, partialNum int, wg *sync.WaitGroup) {
+func (d *Downloader) downloadPartial(rangeStart, rangeStop int, partialNum int, wg *sync.WaitGroup) {
 	defer wg.Done()
 	if rangeStart >= rangeStop {
 		// nothing to download

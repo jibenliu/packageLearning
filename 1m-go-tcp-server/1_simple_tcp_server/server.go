@@ -2,7 +2,6 @@ package main
 
 import (
 	"io"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -34,7 +33,7 @@ func main() {
 	for {
 		conn, e := ln.Accept()
 		if e != nil {
-			if ne, ok := e.(net.Error); ok && ne.Temporary() {
+			if ne, ok := e.(net.Error); ok && !ne.Timeout() {
 				log.Printf("accept temp err: %v", ne)
 				continue
 			}
@@ -52,7 +51,7 @@ func main() {
 }
 
 func handleConn(conn net.Conn) {
-	io.Copy(ioutil.Discard, conn)
+	io.Copy(io.Discard, conn)
 }
 
 func setLimit() {

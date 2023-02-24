@@ -2,7 +2,7 @@ package util
 
 import (
 	"bytes"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"time"
@@ -47,7 +47,7 @@ func (h *HttpConPool) Request(url string, method string, data string, header map
 	} else if response != nil {
 		defer response.Body.Close()
 
-		rBody, err := ioutil.ReadAll(response.Body)
+		rBody, err := io.ReadAll(response.Body)
 		if err != nil {
 			return nil, err
 		} else {
