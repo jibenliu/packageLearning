@@ -22,7 +22,7 @@ func main() {
 			io.ReadCloser
 		}{
 			ReadCloser: r.Body,
-			Writer:     w,}
+			Writer:     w}
 		_ = rpc.ServeRequest(jsonrpc.NewServerCodec(conn))
 	})
 	_ = http.ListenAndServe(":1234", nil)
@@ -32,4 +32,4 @@ func main() {
 /**
 curl localhost:1234/jsonrpc -X POST \
 --data '{"method":"HelloService.Hello","params":["hello"],"id":0}'
- */
+*/

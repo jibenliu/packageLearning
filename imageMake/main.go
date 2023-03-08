@@ -8,7 +8,6 @@ import (
 	_ "image/gif"
 	"image/jpeg"
 	_ "image/png"
-	"io/ioutil"
 	"os"
 )
 
@@ -27,22 +26,20 @@ func compressImagesResource(data []byte) []byte {
 	err = jpeg.Encode(&buf, newImg, &jpeg.Options{Quality: 40})
 	if err != nil {
 		panic(err)
-		return data
 	}
 	if buf.Len() > len(data) {
 		panic("ssss")
-		return data
 	}
 	return buf.Bytes()
 }
 
 func main() {
-	data, err := ioutil.ReadFile("origin.png")
+	data, err := os.ReadFile("origin.png")
 	if err != nil {
 		panic(err)
 	}
 	bts := compressImagesResource(data)
-	err = ioutil.WriteFile("bak.jpg", bts, os.ModePerm)
+	err = os.WriteFile("bak.jpg", bts, os.ModePerm)
 	if err != nil {
 		panic(err)
 	}
