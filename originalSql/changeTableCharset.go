@@ -13,6 +13,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	dSql := "alter database " + dbName + " charset=utf8mb4 collate=utf8mb4_unicode_520_ci"
+	_, err = db.Exec(dSql)
+	if err != nil {
+		panic(err)
+	}
 	tSql := "show tables"
 	tRows, err := db.Query(tSql)
 	if err != nil {
@@ -35,7 +40,7 @@ func main() {
 FROM
     information_schema.COLUMNS
 WHERE
-    TABLE_SCHEMA = "` + dbName + `" AND TABLE_NAME = "` + tName + `" AND DATA_TYPE = "varchar"`
+    TABLE_SCHEMA = "` + dbName + `" AND TABLE_NAME = "` + tName + `" AND (DATA_TYPE = "varchar" OR DATA_TYPE = "text")`
 		sRows, err := db.Query(sSql)
 		if err != nil {
 			panic(err)
@@ -53,7 +58,7 @@ WHERE
 			aSql := "ALTER TABLE `" + tName + "` MODIFY COLUMN `" + cName + "` " + cType + ` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci `
 			if isNullAble == "NO" {
 				if cDefault != nil && *cDefault != "" {
-					aSql += " DEFAULT " + *cDefault
+					aSql += " DEFAULT '" + *cDefault + "'"
 				}
 			} else {
 				aSql += " DEFAULT NULL "
