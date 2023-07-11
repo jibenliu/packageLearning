@@ -1,0 +1,1 @@
+# [使用go泛型对hertz框架封装一把，减少日常开发重复工作量](https://juejin.cn/post/7246321692196339768?utm_source=gold_browser_extension)
