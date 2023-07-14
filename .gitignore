@@ -19,3 +19,5 @@ vendor/
 
 *vendor
 *cache
+*go.sum
+*.vscode
